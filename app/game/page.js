@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Button, Input, Slider, Modal, message } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,7 +19,7 @@ const fetchGameStats = async () => {
   }
 };
 
-export default function GamePage() {
+function GamePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user } = useAuth();
@@ -651,5 +651,28 @@ export default function GamePage() {
         </AnimatePresence>
       </div>
     </div>
+  );
+}
+
+// Loading component for Suspense fallback
+function GamePageLoading() {
+  return (
+    <div className="min-h-screen bg-[#0a0f2c] p-8 flex items-center justify-center">
+      <div className="text-center">
+        <div className="text-[#FFD700] text-2xl font-bold mb-4">
+          Loading Game...
+        </div>
+        <div className="text-white">Please wait while we prepare your game</div>
+      </div>
+    </div>
+  );
+}
+
+// Main export with Suspense boundary
+export default function GamePage() {
+  return (
+    <Suspense fallback={<GamePageLoading />}>
+      <GamePageContent />
+    </Suspense>
   );
 }
