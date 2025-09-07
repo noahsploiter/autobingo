@@ -464,8 +464,8 @@ export default function CashierPage() {
 
           {/* Instructions */}
           <div className="text-gray-600 mt-4">
-            Default shows 100 cards. Use "Add 50 more" to increase up to 500 (or
-            available).
+            Default shows 100 cards. Use &quot;Add 50 more&quot; to increase up
+            to 500 (or available).
           </div>
           {/* Inline cards selection */}
           <div className="mt-6">
@@ -574,7 +574,7 @@ export default function CashierPage() {
 
           {/* Message */}
           <p className="text-gray-600 mb-6 leading-relaxed">
-            You don't have enough balance to start this game.
+            You don&apos;t have enough balance to start this game.
           </p>
 
           {/* Balance Details */}
